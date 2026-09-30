@@ -13,13 +13,14 @@ import { Chatbot }          from './components/Chatbot';
 import { LiveMetricsObservatory } from './components/LiveMetricsObservatory';
 import { AnswerPanel }      from './components/AnswerPanel';
 import { WeightPrioritizer, DEFAULT_WEIGHTS } from './components/WeightPrioritizer';
+import { OCRScanner } from './components/OCRScanner';
 import { PipelineExecutionResponse, DocumentMetadata, MetricWeights } from './types';
 import { api }              from './services/api';
 import { AlertTriangle, Layers, BarChart2, ArrowRight, Sliders, ChevronDown, ChevronUp } from 'lucide-react';
 
 const STORAGE_KEY = 'rag_user';
 
-type Tab = 'chat' | 'dashboard' | 'documents' | 'benchmark' | 'history';
+type Tab = 'chat' | 'dashboard' | 'documents' | 'scanner' | 'benchmark' | 'history';
 
 export function App() {
   const [user, setUser]             = useState<string | null>(() => localStorage.getItem(STORAGE_KEY));
@@ -236,8 +237,13 @@ export function App() {
         )}
 
         {/* ── DOCUMENTS TAB ── */}
+
         {activeTab === 'documents' && (
           <DocumentManager documents={documents} onRefresh={loadHealthAndDocs} />
+        )}
+
+        {activeTab === 'scanner' && (
+          <OCRScanner onIngested={loadHealthAndDocs} onAskQuestions={() => setActiveTab('chat')} />
         )}
 
         {/* ── BENCHMARK TAB ── */}

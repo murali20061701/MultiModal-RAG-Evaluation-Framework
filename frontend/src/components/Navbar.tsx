@@ -1,9 +1,9 @@
 import React from 'react';
-import { Cpu, Database, Award, History, Layers, CheckCircle2, MessageSquare, LogOut, User } from 'lucide-react';
+import { Cpu, Database, Award, History, Layers, CheckCircle2, MessageSquare, LogOut, ScanLine } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab:    'chat' | 'dashboard' | 'documents' | 'benchmark' | 'history';
-  setActiveTab: (tab: 'chat' | 'dashboard' | 'documents' | 'benchmark' | 'history') => void;
+  activeTab:    'chat' | 'dashboard' | 'documents' | 'scanner' | 'benchmark' | 'history';
+  setActiveTab: (tab: 'chat' | 'dashboard' | 'documents' | 'scanner' | 'benchmark' | 'history') => void;
   isDemoMode:   boolean;
   documentCount: number;
   userName?:    string;
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { id: 'chat',      label: 'Chat & Observatory', Icon: MessageSquare, activeColor: 'text-indigo-700 bg-white shadow-2xs font-bold' },
   { id: 'dashboard', label: 'RAG Benchmark',      Icon: Cpu,           activeColor: 'text-purple-700 bg-white shadow-2xs font-bold' },
   { id: 'documents', label: 'Knowledge Base',     Icon: Database,      activeColor: 'text-emerald-700 bg-white shadow-2xs font-bold'},
+  { id: 'scanner',   label: 'OCR Scanner',        Icon: ScanLine,      activeColor: 'text-indigo-700 bg-white shadow-2xs font-bold'},
   { id: 'benchmark', label: 'Suite Benchmarking', Icon: Award,         activeColor: 'text-amber-700 bg-white shadow-2xs font-bold'  },
   { id: 'history',   label: 'Query History',      Icon: History,       activeColor: 'text-slate-800 bg-white shadow-2xs font-bold'  },
 ] as const;
